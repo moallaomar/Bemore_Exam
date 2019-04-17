@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name= "question")
@@ -37,6 +37,7 @@ public class Question implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY , mappedBy="question", cascade = CascadeType.ALL)
 	private Set<Answer> answers = new HashSet<Answer>(0);
 	
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="quiz_id", nullable = false)
 	private Quiz quiz;
@@ -71,7 +72,6 @@ public class Question implements Serializable {
 		this.content = content;
 	}
 
-	@JsonManagedReference
 	public Set<Answer> getAnswers() {
 		return answers;
 	}

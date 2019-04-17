@@ -14,10 +14,11 @@ import fr.bemore.entities.Question;
 public interface QuestionRepository extends JpaRepository<Question, Integer>{
 	
 	public List<Question> findAll();
+	
+	
 	public Optional<Question> findById(Integer id) ;
 	
-	
-		@Query("select q from Question q join q.quiz z where z.id = :x")
-		List<Question> findQuestionsByQuizId(@Param("x") Integer x);
+	@Query("select q from Question q join q.quiz z where z.id = :x")
+	List<Question> findQuestionsByQuizId(@Param("x") Integer x);
 
 }

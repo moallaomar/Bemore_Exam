@@ -77,14 +77,10 @@ public class Quiz implements Serializable{
 		this.createdDate = createdDate;
 	}
 
-	public Quiz(
-			String name,String description
-			,List<Question> questions,
-			Calendar createdDate) {
+	public Quiz(String name,String description) {
 		this.name = name;
 		this.description = description;
-		this.questions = questions;
-		this.createdDate = createdDate;
+
 	}
 	
 	public Quiz() {

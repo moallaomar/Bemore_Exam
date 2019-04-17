@@ -14,5 +14,6 @@ public interface QuizRepository extends JpaRepository<Quiz, Integer> {
 	public List<Quiz> findAll();
 	public Optional<Quiz> findById(Integer id);
 	
+	public Quiz save(Quiz quiz);	
 	
 }

@@ -21,6 +21,13 @@ public class QuizServiceImpl implements QuizService {
 			return quizes;
 	}
 
+
+	@Override
+	public boolean save(Quiz quiz) {
+		quizRepository.save(quiz);	
+return true;
+	}
+
 	
 	
 }
