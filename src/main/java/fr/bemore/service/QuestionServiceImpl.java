@@ -56,11 +56,23 @@ public class QuestionServiceImpl implements QuestionService {
 		return questions;
 	}
 
+	@Override
+	public Question addQuestion(Question question) {
+	Question q =	questionRepository.save(question);
+	return q;
+	}
 
-
-
+	@Override
+	public void deleteById(Integer id) {
+				questionRepository.deleteById(id);
+				System.out.println("deleted");
+	}
 
 	
-	
+	@Override
+	public Integer countNbQuestion() {
+		List<Question> questions = questionRepository.findAll();
+		return questions.size();
+	}
 
 }

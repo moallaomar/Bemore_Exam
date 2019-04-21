@@ -54,12 +54,12 @@ public class Question implements Serializable {
 
 
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -80,5 +80,16 @@ public class Question implements Serializable {
 	public void setAnswers(Set<Answer> answers) {
 		this.answers = answers;
 	}
+
+
+	public Quiz getQuiz() {
+		return quiz;
+	}
+
+
+	public void setQuiz(Quiz quiz) {
+		this.quiz = quiz;
+	}
+	
 	
 }

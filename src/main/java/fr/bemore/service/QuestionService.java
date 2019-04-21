@@ -3,7 +3,6 @@ package fr.bemore.service;
 import java.util.List;
 
 import fr.bemore.entities.Question;
-import fr.bemore.entities.Quiz;
 
 public interface QuestionService {
 
@@ -15,6 +14,12 @@ public interface QuestionService {
 	 	
 	 	public List<Question> findQuestionsByQuizId(Integer id);
 	 	
+	 	public Question addQuestion(Question question);
+	 		 	
+	 	public Integer countNbQuestion();
+	 	
+	 	public void deleteById(Integer id);
+		 
 	 
 	 	
 }

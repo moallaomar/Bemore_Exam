@@ -28,6 +28,22 @@ public class QuizServiceImpl implements QuizService {
 return true;
 	}
 
+
+	@Override
+	public Quiz findLastQuiz() {
+		Quiz quiz = quizRepository.findTopByOrderByIdDesc();
+		return quiz;
+	}
+
+
+	@Override
+	public boolean isQuizName(String name) {
+		if (quizRepository.getQuizByName(name) == null) {
+			return false;
+		}
+		return true;
+	}
+
 	
 	
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ import fr.bemore.entities.Question;
 import fr.bemore.entities.Quiz;
 import fr.bemore.service.QuestionService;
 import fr.bemore.service.QuizService;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class QuizController {
 
@@ -43,6 +44,19 @@ public class QuizController {
 		return true;
 	}
 	
+	@GetMapping(path= "/lastquiz")
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<Quiz> findLastQuiz() {
+		Quiz quiz = quizService.findLastQuiz();
+		System.out.println(quiz);
+		return ResponseEntity.ok().body(quiz);
+	}
+	
+	@GetMapping(path="/isquizname/{name}")
+	@ResponseStatus(HttpStatus.OK)
+	public boolean isQuizName(@PathVariable("name") String name){
+		return quizService.isQuizName(name);
+	}
 	
 	
 	

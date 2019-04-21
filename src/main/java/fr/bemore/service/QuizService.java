@@ -10,4 +10,8 @@ public interface QuizService {
  	
 	public boolean save(Quiz quiz);
 
+	public Quiz findLastQuiz();
+	
+	
+	public boolean isQuizName(String name);
 }
