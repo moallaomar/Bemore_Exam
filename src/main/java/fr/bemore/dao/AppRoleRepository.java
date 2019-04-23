@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import fr.bemore.entities.AppRole;
 
 @RepositoryRestResource
-public interface AppRoleRepository extends JpaRepository<AppRole,Long> {
-    public AppRole findByRoleName(String roleName);
+public interface AppRoleRepository extends JpaRepository<AppRole, Long> {
+	public AppRole findByRoleName(String roleName);
 }

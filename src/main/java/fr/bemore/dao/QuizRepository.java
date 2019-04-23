@@ -14,14 +14,15 @@ import fr.bemore.entities.Quiz;
 public interface QuizRepository extends JpaRepository<Quiz, Integer> {
 
 	public List<Quiz> findAll();
+
 	public Optional<Quiz> findById(Integer id);
-	
-	public Quiz save(Quiz quiz);	
-	
+
+	@SuppressWarnings("unchecked")
+	public Quiz save(Quiz quiz);
+
 	public Quiz findTopByOrderByIdDesc();
-	
+
 	@Query("select q from Quiz q where q.name = :x")
 	public Quiz getQuizByName(@Param("x") String x);
 
-	
 }

@@ -17,17 +17,18 @@ import fr.bemore.service.AccountService;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    @Autowired
-    private AccountService accountService;
+	@Autowired
+	private AccountService accountService;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AppUser appUser=accountService.loadUserByUsername(username);
-        if(appUser==null) throw new UsernameNotFoundException("invalid user");
-        Collection<GrantedAuthority> authorities=new ArrayList<>();
-        appUser.getRoles().forEach(r->{
-            authorities.add(new SimpleGrantedAuthority(r.getRoleName()));
-        });
-        return new User(appUser.getUsername(),appUser.getPassword(),authorities);
-    }
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		AppUser appUser = accountService.loadUserByUsername(username);
+		if (appUser == null)
+			throw new UsernameNotFoundException("invalid user");
+		Collection<GrantedAuthority> authorities = new ArrayList<>();
+		appUser.getRoles().forEach(r -> {
+			authorities.add(new SimpleGrantedAuthority(r.getRoleName()));
+		});
+		return new User(appUser.getUsername(), appUser.getPassword(), authorities);
+	}
 }

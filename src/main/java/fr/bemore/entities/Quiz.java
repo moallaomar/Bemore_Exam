@@ -19,16 +19,14 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name="quiz")
-public class Quiz implements Serializable{
-	
-	
-	
+@Table(name = "quiz")
+public class Quiz implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id", unique = true ,nullable = false)
+	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
-	
+
 	private static final long serialVersionUID = 65628L;
 
 	@Size(min = 2, max = 100, message = "The name must be between 2 and 100 messages.")
@@ -60,6 +58,7 @@ public class Quiz implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	@JsonManagedReference
 	public List<Question> getQuestions() {
 		return questions;
@@ -77,14 +76,14 @@ public class Quiz implements Serializable{
 		this.createdDate = createdDate;
 	}
 
-	public Quiz(String name,String description) {
+	public Quiz(String name, String description) {
 		this.name = name;
 		this.description = description;
 
 	}
-	
+
 	public Quiz() {
-		
+
 	}
 
 	public Integer getId() {
@@ -94,9 +93,5 @@ public class Quiz implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	
-	
-	
 
 }

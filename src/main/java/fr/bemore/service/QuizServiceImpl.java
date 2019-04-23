@@ -12,29 +12,25 @@ import fr.bemore.entities.Quiz;
 public class QuizServiceImpl implements QuizService {
 
 	@Autowired
-	private QuizRepository  quizRepository;
-	
-	
+	private QuizRepository quizRepository;
+
 	@Override
 	public List<Quiz> findAll() {
-			List<Quiz> quizes = quizRepository.findAll();
-			return quizes;
+		List<Quiz> quizes = quizRepository.findAll();
+		return quizes;
 	}
-
 
 	@Override
 	public boolean save(Quiz quiz) {
-		quizRepository.save(quiz);	
-return true;
+		quizRepository.save(quiz);
+		return true;
 	}
-
 
 	@Override
 	public Quiz findLastQuiz() {
 		Quiz quiz = quizRepository.findTopByOrderByIdDesc();
 		return quiz;
 	}
-
 
 	@Override
 	public boolean isQuizName(String name) {
@@ -44,6 +40,4 @@ return true;
 		return true;
 	}
 
-	
-	
 }

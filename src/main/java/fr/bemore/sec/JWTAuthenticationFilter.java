@@ -24,39 +24,38 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.bemore.entities.AppUser;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-    private AuthenticationManager authenticationManager;
+	private AuthenticationManager authenticationManager;
 
-    public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
-        this.authenticationManager = authenticationManager;
-    }
+	public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
+		this.authenticationManager = authenticationManager;
+	}
 
+	@Override
+	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
+			throws AuthenticationException {
+		try {
+			AppUser appUser = new ObjectMapper().readValue(request.getInputStream(), AppUser.class);
+			return authenticationManager.authenticate(
+					new UsernamePasswordAuthenticationToken(appUser.getUsername(), appUser.getPassword()));
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
 
-    @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        try {
-            AppUser appUser= new ObjectMapper().readValue(request.getInputStream(),AppUser.class);
-            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(appUser.getUsername(),appUser.getPassword()));
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
-                                            FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        User user=(User)authResult.getPrincipal();
-        List<String> roles=new ArrayList<>();
-        authResult.getAuthorities().forEach(a->{
-            roles.add(a.getAuthority());
-        });
-        String jwt= JWT.create()
-                .withIssuer(request.getRequestURI())
-                .withSubject(user.getUsername())
-                .withArrayClaim("roles",roles.toArray(new String[roles.size()]))
-                .withExpiresAt(new Date(System.currentTimeMillis()+SecurityParams.EXPIRATION))
-                .sign(Algorithm.HMAC256(SecurityParams.SECRET));
-        response.addHeader(SecurityParams.JWT_HEADER_NAME,jwt);
-    }
+	@Override
+	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
+			Authentication authResult) throws IOException, ServletException {
+		User user = (User) authResult.getPrincipal();
+		List<String> roles = new ArrayList<>();
+		authResult.getAuthorities().forEach(a -> {
+			roles.add(a.getAuthority());
+		});
+		String jwt = JWT.create().withIssuer(request.getRequestURI()).withSubject(user.getUsername())
+				.withArrayClaim("roles", roles.toArray(new String[roles.size()]))
+				.withExpiresAt(new Date(System.currentTimeMillis() + SecurityParams.EXPIRATION))
+				.sign(Algorithm.HMAC256(SecurityParams.SECRET));
+		response.addHeader(SecurityParams.JWT_HEADER_NAME, jwt);
+	}
 
 }

@@ -15,23 +15,21 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Autowired
 	private QuestionRepository questionRepository;
-	
-	
+
 	@Override
 	public List<Question> findAll() {
-	
+
 		return questionRepository.findAll();
 	}
 
 	@Override
 	public int findAnswerIdCorrect(int questionId) {
-			Question question = questionRepository.findById(questionId).get();
-			for (Answer answer : question.getAnswers()) {
-				if(answer.isCorrect())
-				{
-					return answer.getId();
-				}
+		Question question = questionRepository.findById(questionId).get();
+		for (Answer answer : question.getAnswers()) {
+			if (answer.isCorrect()) {
+				return answer.getId();
 			}
+		}
 		return -1;
 	}
 
@@ -41,34 +39,24 @@ public class QuestionServiceImpl implements QuestionService {
 		return optQues.get();
 	}
 
-	public QuestionRepository getQuestionRepository() {
-		return questionRepository;
-	}
-
-
-	public void setQuestionRepository(QuestionRepository questionRepository) {
-		this.questionRepository = questionRepository;
-	}
-
 	@Override
 	public List<Question> findQuestionsByQuizId(Integer id) {
-			List<Question> questions  = questionRepository.findQuestionsByQuizId(id);
+		List<Question> questions = questionRepository.findQuestionsByQuizId(id);
 		return questions;
 	}
 
 	@Override
 	public Question addQuestion(Question question) {
-	Question q =	questionRepository.save(question);
-	return q;
+		Question q = questionRepository.save(question);
+		return q;
 	}
 
 	@Override
 	public void deleteById(Integer id) {
-				questionRepository.deleteById(id);
-				System.out.println("deleted");
+		questionRepository.deleteById(id);
+		System.out.println("deleted");
 	}
 
-	
 	@Override
 	public Integer countNbQuestion() {
 		List<Question> questions = questionRepository.findAll();

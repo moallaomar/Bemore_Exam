@@ -6,7 +6,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import fr.bemore.entities.AppUser;
 
 @RepositoryRestResource
-public interface AppUserRepository extends JpaRepository<AppUser,Long> {
-    public AppUser findByUsername(String username);
-    
+public interface AppUserRepository extends JpaRepository<AppUser, Long> {
+	public AppUser findByUsername(String username);
+
 }

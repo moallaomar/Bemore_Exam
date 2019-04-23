@@ -2,6 +2,7 @@ package fr.bemore.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,16 +21,20 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class Answer implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 148L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id",nullable = false, unique = true)
 	private Integer id;
-	@ManyToOne(fetch = FetchType.LAZY)
+	
+	@JsonBackReference
+	@ManyToOne(fetch = FetchType.EAGER  )
 	@JoinColumn(name="question_id", nullable = false)
 	private Question question;
+	
+	
 	@Lob
 	@Column(name="content",nullable = false,length = 1000)
 	private String content;
@@ -41,8 +46,7 @@ public class Answer implements Serializable {
 		
 	}
 	
-	public Answer(Question question,String content, boolean correct) {
-		this.question = question;
+	public Answer(String content, boolean correct) {
 		this.content = content;
 		this.correct = correct;
 	}
@@ -55,7 +59,7 @@ public class Answer implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	@JsonBackReference
+	
 	public Question getQuestion() {
 		return question;
 	}
