@@ -13,4 +13,6 @@ public interface QuizService {
 	public Quiz findLastQuiz();
 
 	public boolean isQuizName(String name);
+	
+	public void deleteById(Integer quizId); 
 }

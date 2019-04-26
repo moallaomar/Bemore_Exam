@@ -24,5 +24,8 @@ public interface QuizRepository extends JpaRepository<Quiz, Integer> {
 
 	@Query("select q from Quiz q where q.name = :x")
 	public Quiz getQuizByName(@Param("x") String x);
-
+	
+	
+	public void deleteById(Integer id);
+	
 }

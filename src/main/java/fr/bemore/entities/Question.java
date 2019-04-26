@@ -2,7 +2,6 @@ package fr.bemore.entities;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -35,7 +34,7 @@ public class Question implements Serializable {
 	private String content;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "question", cascade = CascadeType.ALL)
-	private List<Answer> answers ;
+	private List<Answer> answers;
 
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -65,6 +64,7 @@ public class Question implements Serializable {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	@JsonManagedReference
 	public List<Answer> getAnswers() {
 		return answers;

@@ -22,12 +22,12 @@ public class AppUser {
 	private String username;
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
+	
 	private boolean actived;
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Collection<AppRole> roles = new ArrayList<>();
 
 	public AppUser() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

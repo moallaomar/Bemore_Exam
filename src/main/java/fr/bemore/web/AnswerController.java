@@ -57,12 +57,12 @@ public class AnswerController {
 
 		return ResponseEntity.ok().body(answers);
 	}
-	
+
 	@DeleteMapping("/answer/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<String> deleteAnswerById(@PathVariable Integer id){
-				answerService.deleteById(id);
-				return ResponseEntity.ok().body("DELETED");
+	public ResponseEntity<String> deleteAnswerById(@PathVariable Integer id) {
+		answerService.deleteById(id);
+		return ResponseEntity.ok().body("DELETED");
 	}
 
 }

@@ -39,5 +39,9 @@ public class QuizServiceImpl implements QuizService {
 		}
 		return true;
 	}
+	
+	public void deleteById(Integer quizId) {
+		quizRepository.deleteById(quizId);
+	}
 
 }
