@@ -8,9 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import fr.bemore.entities.Question;
 import fr.bemore.entities.Quiz;
 
-@Repository("quizRepository")
+@Repository
 public interface QuizRepository extends JpaRepository<Quiz, Integer> {
 
 	public List<Quiz> findAll();
@@ -25,7 +26,11 @@ public interface QuizRepository extends JpaRepository<Quiz, Integer> {
 	@Query("select q from Quiz q where q.name = :x")
 	public Quiz getQuizByName(@Param("x") String x);
 	
+
+	
 	
 	public void deleteById(Integer id);
+	
+
 	
 }

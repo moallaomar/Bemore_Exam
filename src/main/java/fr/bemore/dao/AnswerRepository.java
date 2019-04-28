@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.bemore.entities.Answer;
 
-@Repository("answerRepository")
+@Repository
 public interface AnswerRepository extends JpaRepository<Answer, Integer> {
 
 	@SuppressWarnings("unchecked")

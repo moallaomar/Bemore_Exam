@@ -51,10 +51,11 @@ public class QuestionController {
 		return answerId;
 	}
 
-	@PostMapping("/question")
+	@PostMapping("/question/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<Question> addQuestion(@RequestBody Question question) {
-		Quiz quiz = QuizService.findLastQuiz();
+	public ResponseEntity<Question> addQuestion(@PathVariable("id") Integer id, @RequestBody Question question) {
+
+		Quiz quiz = QuizService.findById(id);
 		question.setQuiz(quiz);
 		Question q = questionService.addQuestion(question);
 		System.out.println("added");

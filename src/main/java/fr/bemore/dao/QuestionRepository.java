@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.bemore.entities.Question;
 
-@Repository("questionRepository")
+@Repository
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
 	public List<Question> findAll();

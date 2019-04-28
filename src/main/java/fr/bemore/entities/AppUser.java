@@ -26,6 +26,7 @@ public class AppUser {
 	private boolean actived;
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Collection<AppRole> roles = new ArrayList<>();
+	
 
 	public AppUser() {
 	}

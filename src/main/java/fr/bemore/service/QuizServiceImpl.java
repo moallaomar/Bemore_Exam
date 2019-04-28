@@ -1,47 +1,115 @@
 package fr.bemore.service;
 
-import java.util.List;
-
+import fr.bemore.dao.*;
+import fr.bemore.entities.*;
+import fr.bemore.entities.dto.AnswerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.bemore.dao.QuizRepository;
-import fr.bemore.entities.Quiz;
+import java.security.Principal;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 @Service
 public class QuizServiceImpl implements QuizService {
 
-	@Autowired
-	private QuizRepository quizRepository;
+    @Autowired
+    private QuizRepository quizRepository;
+    @Autowired
+    private AccountService accountService;
+    @Autowired
+    private QuizService quizService;
 
-	@Override
-	public List<Quiz> findAll() {
-		List<Quiz> quizes = quizRepository.findAll();
-		return quizes;
-	}
+    @Autowired
+    private AnswerRepository answerRepository;
 
-	@Override
-	public boolean save(Quiz quiz) {
-		quizRepository.save(quiz);
-		return true;
-	}
+    @Autowired
+    private QuestionRepository questionRepository;
+    @Autowired
+    private QuizUserRepository quizUserRepository;
+    @Autowired
+    private QuizAnswerRepository quizAnswerRepository;
+    @Override
+    public List<Quiz> findAll() {
+        List<Quiz> quizes = quizRepository.findAll();
+        return quizes;
+    }
 
-	@Override
-	public Quiz findLastQuiz() {
-		Quiz quiz = quizRepository.findTopByOrderByIdDesc();
-		return quiz;
-	}
+    @Override
+    public boolean save(Quiz quiz) {
+        quizRepository.save(quiz);
+        return true;
+    }
 
-	@Override
-	public boolean isQuizName(String name) {
-		if (quizRepository.getQuizByName(name) == null) {
-			return false;
-		}
-		return true;
-	}
-	
-	public void deleteById(Integer quizId) {
-		quizRepository.deleteById(quizId);
-	}
+    @Override
+    public Quiz findLastQuiz() {
+        Quiz quiz = quizRepository.findTopByOrderByIdDesc();
+        return quiz;
+    }
 
+    @Override
+    public boolean isQuizName(String name) {
+        if (quizRepository.getQuizByName(name) == null) {
+            return false;
+        }
+        return true;
+    }
+
+    public void deleteById(Integer quizId) {
+        quizRepository.deleteById(quizId);
+    }
+
+    @Override
+    public Quiz findById(Integer id) {
+        Optional<Quiz> Quiz = quizRepository.findById(id);
+        return Quiz.get();
+
+    }
+
+    @Override
+    public void submitQuiz(Integer quizId, List<AnswerDTO> answers, Principal principal) {
+        AppUser appUser = accountService.loadUserByUsername(principal.getName());
+        Quiz quiz = quizService.findById(quizId);
+
+        QuizUser quizUser = new QuizUser();
+
+        answers.forEach(answerDTO -> {
+            Answer answer = null;
+            if (answerDTO.answered != null) {
+                answer = answerRepository.findById(answerDTO.answered).get();
+            }
+            Question question = questionRepository.findById(answerDTO.questionId).get();
+            quizUser.addQuizAnswer(new QuizAnswer(quizUser, question, answer));
+        });
+
+        quizUser.setAppUser(appUser);
+        quizUser.setQuiz(quiz);
+        quizUser.setPassedDateTime(LocalDateTime.now());
+
+        quizUserRepository.save(quizUser);
+    }
+
+    @Override
+    public QuizUser userPassedQuiz(Integer quizId, Principal principal) {
+        AppUser appUser = accountService.loadUserByUsername(principal.getName());
+        Quiz quiz = quizService.findById(quizId);
+
+        Optional<QuizUser> quizUser = quizUserRepository.findByAppUserAndQuiz(appUser, quiz);
+
+        return quizUser.orElse(null);
+    }
+
+
+    public List<QuizAnswer> findQuizAnswerByQuizUser(Integer quizId, Principal principal) {
+        AppUser appUser = accountService.loadUserByUsername(principal.getName());
+        Quiz quiz = quizService.findById(quizId);
+        QuizUser quizUser = quizUserRepository.findByAppUserAndQuiz(appUser,quiz).get();
+
+        List<QuizAnswer> quizAnswer = quizAnswerRepository.findByQuizUser(quizUser);
+
+        return quizAnswer;
+
+    }
 }

@@ -1,7 +1,10 @@
 package fr.bemore.web;
 
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
+import fr.bemore.entities.dto.AnswerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -62,7 +65,13 @@ public class QuizController {
 
 	@GetMapping("/quiz/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<List<Question>> findQuestionsByQuizId(@PathVariable("id") Integer id) {
+	public ResponseEntity<List<Question>> findQuestionsByQuizId(@PathVariable("id") Integer id, Principal principal) {
+		if(quizService.userPassedQuiz(id, principal) != null){
+
+			List<Question> q = null;
+			return ResponseEntity.ok().body(q);
+		}
+
 		List<Question> questions = questionService.findQuestionsByQuizId(id);
 		return ResponseEntity.ok().body(questions);
 	}
@@ -71,5 +80,10 @@ public class QuizController {
 	@ResponseStatus(HttpStatus.OK)
 	public void DeleteQuiz(@PathVariable("id") Integer id) {
 		quizService.deleteById(id);
+	}
+
+	@PostMapping("/quiz/{id}")
+	public void submitQuiz(@PathVariable("id") Integer id, Principal principal, @RequestBody List<AnswerDTO> answersDTO){
+		quizService.submitQuiz(id, answersDTO, principal);
 	}
 }
