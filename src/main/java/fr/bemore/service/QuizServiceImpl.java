@@ -10,7 +10,6 @@ import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
 
 @Service
 public class QuizServiceImpl implements QuizService {
@@ -31,6 +30,7 @@ public class QuizServiceImpl implements QuizService {
     private QuizUserRepository quizUserRepository;
     @Autowired
     private QuizAnswerRepository quizAnswerRepository;
+
     @Override
     public List<Quiz> findAll() {
         List<Quiz> quizes = quizRepository.findAll();
@@ -51,10 +51,7 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     public boolean isQuizName(String name) {
-        if (quizRepository.getQuizByName(name) == null) {
-            return false;
-        }
-        return true;
+        return quizRepository.getQuizByName(name) != null;
     }
 
     public void deleteById(Integer quizId) {
@@ -88,6 +85,10 @@ public class QuizServiceImpl implements QuizService {
         quizUser.setQuiz(quiz);
         quizUser.setPassedDateTime(LocalDateTime.now());
 
+        Quiz q = quizService.findById(quizId);
+
+        quizUser.setNbQuestion(q.getQuestions().size());
+
         quizUserRepository.save(quizUser);
     }
 
@@ -105,7 +106,7 @@ public class QuizServiceImpl implements QuizService {
     public List<QuizAnswer> findQuizAnswerByQuizUser(Integer quizId, Principal principal) {
         AppUser appUser = accountService.loadUserByUsername(principal.getName());
         Quiz quiz = quizService.findById(quizId);
-        QuizUser quizUser = quizUserRepository.findByAppUserAndQuiz(appUser,quiz).get();
+        QuizUser quizUser = quizUserRepository.findByAppUserAndQuiz(appUser, quiz).get();
 
         List<QuizAnswer> quizAnswer = quizAnswerRepository.findByQuizUser(quizUser);
 

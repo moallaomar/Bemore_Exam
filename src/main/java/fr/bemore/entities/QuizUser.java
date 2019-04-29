@@ -26,14 +26,20 @@ public class QuizUser implements Serializable {
     @OneToMany(mappedBy = "quizUser", cascade = CascadeType.ALL)
     private List<QuizAnswer> quizAnswers;
 
+
+    @Column
+    private Integer score;
+
+    @Column
+    private Integer nbQuestion;
+    private LocalDateTime passedDateTime;
+
     public void addQuizAnswer(QuizAnswer quizAnswer) {
         if (this.quizAnswers == null) {
             this.quizAnswers = new ArrayList<>();
         }
         this.quizAnswers.add(quizAnswer);
     }
-
-    private LocalDateTime passedDateTime;
 
     public Integer getId() {
         return id;
@@ -74,5 +80,21 @@ public class QuizUser implements Serializable {
 
     public void setQuizAnswers(List<QuizAnswer> quizAnswers) {
         this.quizAnswers = quizAnswers;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public Integer getNbQuestion() {
+        return nbQuestion;
+    }
+
+    public void setNbQuestion(Integer nbQuestion) {
+        this.nbQuestion = nbQuestion;
     }
 }

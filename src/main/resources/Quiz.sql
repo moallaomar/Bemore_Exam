@@ -13,10 +13,8 @@ INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('7', 'Whic
 INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('8', 'Which of the following has the default scope in Spring?','1');
 INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('9', 'What is the Life Cycle Of A Jpa Entity?','1');
 INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('10', 'What is TRUE about the cascading and cascade mode attributes in Entity Beans?','1');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('11', 'Which of the following statements can be used to determine if cat can be found in the list? ArrayList<String> list = new ArrayList<>(); 
-          list.add("dog"); 
-          list.add("cat"); 
-          list.add("frog"); ','1');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('11', 'Which of the following statements can be used to determine if cat can be found in the list? ArrayList<String> list = new ArrayList<>(); \n list.add("dog"); \n list.add("cat"); \n    list.add("frog"); \n ','1');
+
 
 
 

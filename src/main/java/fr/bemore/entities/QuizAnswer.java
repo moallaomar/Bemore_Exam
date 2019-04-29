@@ -1,13 +1,11 @@
 package fr.bemore.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 public class QuizAnswer implements Serializable {
-
 
 
     private static final long serialVersionUID = 2564L;
@@ -30,7 +28,8 @@ public class QuizAnswer implements Serializable {
         this.question = question;
         this.selectedAnswer = selectedAnswer;
     }
-    public QuizAnswer(){
+
+    public QuizAnswer() {
 
     }
 

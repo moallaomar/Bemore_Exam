@@ -1,23 +1,23 @@
 package fr.bemore.service;
 
-import java.util.List;
-
 import fr.bemore.entities.Question;
+
+import java.util.List;
 
 public interface QuestionService {
 
-	public List<Question> findAll();
+    public List<Question> findAll();
 
-	public Question findById(Integer id);
+    public Question findById(Integer id);
 
-	public int findAnswerIdCorrect(int questionId);
+    public int findAnswerIdCorrect(int questionId);
 
-	public List<Question> findQuestionsByQuizId(Integer id);
+    public List<Question> findQuestionsByQuizId(Integer id);
 
-	public Question addQuestion(Question question);
+    public Question addQuestion(Question question);
 
-	public Integer countNbQuestion();
+    public Integer countNbQuestion();
 
-	public void deleteById(Integer id);
+    public void deleteById(Integer id);
 
 }
