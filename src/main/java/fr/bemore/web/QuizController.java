@@ -48,6 +48,15 @@ public class QuizController {
 		return ResponseEntity.ok().body(quiz);
 	}
 
+	@GetMapping(path="/getquiz/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public  ResponseEntity getById(@PathVariable("id") Integer id){
+		Quiz quiz = quizService.findById(id);
+
+		return ResponseEntity.ok(quiz);
+	}
+
+
 	@GetMapping(path = "/isquizname/{name}")
 	@ResponseStatus(HttpStatus.OK)
 	public boolean isQuizName(@PathVariable("name") String name) {

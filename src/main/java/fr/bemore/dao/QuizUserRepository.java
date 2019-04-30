@@ -6,9 +6,13 @@ import fr.bemore.entities.QuizUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface QuizUserRepository extends JpaRepository<QuizUser, Integer> {
     Optional<QuizUser> findByAppUserAndQuiz(AppUser appUser, Quiz quiz);
+
+    @Override
+    List<QuizUser> findAll();
 }
