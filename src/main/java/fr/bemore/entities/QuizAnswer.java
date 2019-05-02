@@ -20,7 +20,7 @@ public class QuizAnswer implements Serializable {
     @ManyToOne
     private Question question;
 
-    @ManyToOne
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
     private Answer selectedAnswer;
 
     public QuizAnswer(QuizUser quizUser, Question question, Answer selectedAnswer) {

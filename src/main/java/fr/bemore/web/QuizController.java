@@ -82,8 +82,9 @@ public class QuizController {
 		quizService.deleteById(id);
 	}
 
-	@PostMapping("/quiz/{id}")
-	public void submitQuiz(@PathVariable("id") Integer id, Principal principal, @RequestBody List<AnswerDTO> answersDTO){
-		quizService.submitQuiz(id, answersDTO, principal);
+	@PostMapping("/quiz/{id}/{score}")
+	public void submitQuiz(@PathVariable("id") Integer id, Principal principal, @RequestBody List<AnswerDTO> answersDTO,
+								@PathVariable("score") String score){
+		quizService.submitQuiz(id,answersDTO,principal,score);
 	}
 }

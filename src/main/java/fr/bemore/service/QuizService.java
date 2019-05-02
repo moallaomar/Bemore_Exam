@@ -22,7 +22,7 @@ public interface QuizService {
 
     public Quiz findById(Integer id);
 
-    public void submitQuiz(Integer quizId, List<AnswerDTO> answers, Principal principal);
+    public void submitQuiz(Integer quizId, List<AnswerDTO> answers, Principal principal, String score);
 
     public QuizUser userPassedQuiz(Integer quizId, Principal principal);
 

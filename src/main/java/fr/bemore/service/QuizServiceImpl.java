@@ -66,7 +66,7 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public void submitQuiz(Integer quizId, List<AnswerDTO> answers, Principal principal) {
+    public void submitQuiz(Integer quizId, List<AnswerDTO> answers, Principal principal, String score) {
         AppUser appUser = accountService.loadUserByUsername(principal.getName());
         Quiz quiz = quizService.findById(quizId);
 
@@ -80,10 +80,11 @@ public class QuizServiceImpl implements QuizService {
             Question question = questionRepository.findById(answerDTO.questionId).get();
             quizUser.addQuizAnswer(new QuizAnswer(quizUser, question, answer));
         });
-
         quizUser.setAppUser(appUser);
         quizUser.setQuiz(quiz);
         quizUser.setPassedDateTime(LocalDateTime.now());
+        Integer s = Integer.parseInt(score);
+        quizUser.setScore(s);
 
         Quiz q = quizService.findById(quizId);
 

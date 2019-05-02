@@ -38,6 +38,14 @@ public class AnswerController {
         return ResponseEntity.ok().body(nb);
     }
 
+    @GetMapping("/answers/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity getAnswerById(@PathVariable("id") Integer id) {
+
+           Answer ans = answerService.findById(id);
+           return ResponseEntity.ok().body(ans);
+    }
+
     @GetMapping("/answer/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<Answer>> getAnswersByQuestionId(@PathVariable("id") Integer id) {

@@ -44,4 +44,16 @@ public class AnswerServiceImpl implements AnswerService {
 
     }
 
+    @Override
+    public Answer findById(Integer id) throws NullPointerException {
+         try {
+             Answer ans = answerRepository.findById(id).get();
+             return ans;
+         }catch (NullPointerException e){
+             e.printStackTrace();
+             return new Answer();
+         }
+
+    }
+
 }
