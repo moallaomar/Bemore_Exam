@@ -18,7 +18,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
+/**
+ * This class represents the authorization filter for all HTTP Request.
+ *
+ * @author Omar Moalla
+ *
+ * @version 1.0
+ *
+ */
 public class JWTAuthorizationFiler extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

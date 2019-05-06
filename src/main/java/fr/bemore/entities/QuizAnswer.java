@@ -3,7 +3,13 @@ package fr.bemore.entities;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import java.io.Serializable;
-
+/**
+ * This class represents an association between QuizUser and answers to see the answers of a specific user.
+ * 
+ * @author Omar Moalla
+ * @version 1.0
+ * 
+ */
 @Entity
 public class QuizAnswer implements Serializable {
 
@@ -32,7 +38,8 @@ public class QuizAnswer implements Serializable {
     public QuizAnswer() {
 
     }
-
+    /** GETTERS & SETTERS
+     */
     @JsonBackReference
     public QuizUser getQuizUser() {
         return quizUser;

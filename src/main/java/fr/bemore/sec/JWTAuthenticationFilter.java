@@ -19,7 +19,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+/**
+ * This class represents the authentification filter for managing user's security.
+ *
+ * @author Omar Moalla
+ *
+ * @version 1.0
+ *
+ */
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private AuthenticationManager authenticationManager;
 

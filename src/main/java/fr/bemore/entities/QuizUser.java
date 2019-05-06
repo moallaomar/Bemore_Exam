@@ -8,6 +8,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents an association between User and quiz to see all the taken exams.
+ *
+ * @author Omar Moalla
+ * @version 1.0
+ */
 @Entity
 public class QuizUser implements Serializable {
 
@@ -32,15 +38,23 @@ public class QuizUser implements Serializable {
 
     @Column
     private Integer nbQuestion;
+
+
     private LocalDateTime passedDateTime;
 
+
+
+    /** Creates a quizanswer object for each  quizUser object creation.
+     * @param quizAnswer, the description of the quiz.
+     */
     public void addQuizAnswer(QuizAnswer quizAnswer) {
         if (this.quizAnswers == null) {
             this.quizAnswers = new ArrayList<>();
         }
         this.quizAnswers.add(quizAnswer);
     }
-
+    /** GETTERS & SETTERS
+     */
     public Integer getId() {
         return id;
     }

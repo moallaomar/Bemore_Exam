@@ -13,7 +13,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
+/**
+ * This class represents the implementations for the methods loadByUsername.
+ *
+ * @author Omar Moalla
+ *
+ * @version 1.0
+ *
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired

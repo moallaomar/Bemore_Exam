@@ -1,5 +1,12 @@
 package fr.bemore.sec;
-
+/**
+ * This Interface represents the securities params.
+ *
+ * @author Omar Moalla
+ *
+ * @version 1.0
+ *
+ */
 public interface SecurityParams {
     public static final String JWT_HEADER_NAME = "Authorization";
     public static final String SECRET = "omar.moalla@bemore.com";

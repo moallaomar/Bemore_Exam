@@ -1,10 +1,9 @@
 INSERT INTO `db_users`.`quiz` (`id`, `description`, `name`) VALUES ('1', 'Oracle', 'JAVA');
-INSERT INTO `db_users`.`quiz` (`id`, `description`, `name`) VALUES ('2', 'Microsoft', '.net');
-INSERT INTO `db_users`.`quiz` (`id`, `description`, `name`) VALUES ('3', 'google', 'Angular');
+INSERT INTO `db_users`.`quiz` (`id`, `description`, `name`) VALUES ('2', 'Google', 'Angular');
+INSERT INTO `db_users`.`quiz` (`id`, `description`, `name`) VALUES ('3', 'Microsoft', '.net');
 
-
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('1', 'POO','1');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('2', 'JVM','1');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('1', 'Whats POO','1');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('2', 'JVM ?','1');
 INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('3', 'Which of the following lines will compile without warning or error?','1');
 INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('4', 'Which of the following annotation of JAX RS API binds the parameter passed to method to a value in path?','1');
 INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('5', 'Which statement will display each element of the array? \n int myArray[] = {1,2,3,4,5}; ','1');
@@ -17,6 +16,20 @@ INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('11', 'Whi
 
 
 
+
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('12', 'In Angular, you can pass data from child component to parent component using','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('13', 'In Angular routing, below tag is used to render matched component via active route.','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('14', 'We need to call below method of RouterModule for providing all routes in AppModule','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('15', 'To build application in production mode, use below command','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('16', 'Directive can listen to host/target events using below decoarator','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('17', 'Using below wild card we can define page not found route','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('18', 'Below service can be used to extract route parameters inside component','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('19', ' HTTP service’s get/put/post/delete function returns','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('20', 'To use HttpClient component you need to import below module','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('21', 'A component can have child route defined using below property','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('22', 'Below component represent “target/host” DOM element inside Directive’s constructor','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('23', 'Angular 2+ is using ........to detect changes.','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('24', 'A directive which modifies DOM hierarchy is called','2');
 
 
 
@@ -91,3 +104,85 @@ INSERT INTO `db_users`.`answer` (`id`,`content`, `correct`, `question_id`) VALUE
 INSERT INTO `db_users`.`answer` (`id`,`content`, `correct`, `question_id`) VALUES (42,'list.indexOf(1)', b'0', '11');
 INSERT INTO `db_users`.`answer` (`id`,`content`, `correct`, `question_id`) VALUES (43,'list.toString()', b'0', '11');
 INSERT INTO `db_users`.`answer` (`id`,`content`, `correct`, `question_id`) VALUES (44,'list.reverse', b'0', '11');
+
+
+
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (45, '@Output', b'0', 12);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (46, '@Input', b'1', 12);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (47, '@ViewChild', b'0', 12);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (48, '@DecoratorExpression', b'0', 12);
+
+
+
+
+
+
+
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (49, '<router></router>', b'0', 13);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (50, '<router-output></router-output>', b'0', 13);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (51, '<router-outlet></router-outlet>', b'1', 13);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (52, '<router-display></router-display>', b'0', 13);
+
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (53, 'RouterModule.forChild', b'0', 14);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (54, 'RouterModule', b'0', 14);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (55, 'RouterModule.forRoot', b'1', 14);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (56, 'RouterModule.import', b'0', 14);
+
+
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (57, 'ng build', b'0', 15);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (58, 'ng serve', b'0', 15);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (59, 'ng lint', b'0', 15);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (60, 'ng build --prod', b'1', 15);
+
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (61, '@HostListener', b'1', 16);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (62, '@OnListener', b'0', 16);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (63, '@Listener', b'0', 16);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (64, '@TargetListener', b'0', 16);
+
+
+
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (65, '404', b'0', 17);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (66, '^', b'0', 17);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (67, '*', b'0', 17);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (68, '**', b'1', 17);
+
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (69, 'Router', b'0', 18);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (70, 'Route', b'0', 18);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (71, 'ActivatedRoute', b'1', 18);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (72, 'CurrentRoute', b'0', 18);
+
+
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (73, 'object of type “any”', b'0', 19);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (74, 'Observable', b'1', 19);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (75, 'Json data', b'0', 19);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (76, 'callback function', b'0', 19);
+
+
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (77, 'HttpModule', b'0', 20);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (78, 'Http', b'0', 20);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (79, 'HttpClientModule', b'1', 20);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (80, 'None of the above', b'0', 20);
+
+
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (81, 'Routes', b'0', 21);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (82, 'Children', b'1', 21);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (83, 'routeCollection', b'0', 21);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (84, 'None of the above', b'0', 21);
+
+
+
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (85, 'Element', b'0', 22);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (86, 'ElementRef', b'1', 22);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (87, 'Host', b'0', 22);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (88, 'Target', b'0', 22);
+
+
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (89, 'zone$.js', b'0', 23);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (90, 'Scope.js', b'0', 23);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (91, 'zone.js', b'1', 23);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (92, 'zones.js', b'0', 23);
+
+
+
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (93, 'Structural directive', b'1', 24);
+INSERT INTO `db_users`.`answer` (`id`, `content`, `correct`, `question_id`) VALUES (94, 'Attribute directive', b'0', 24);

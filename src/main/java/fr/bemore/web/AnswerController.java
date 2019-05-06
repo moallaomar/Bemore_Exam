@@ -42,8 +42,8 @@ public class AnswerController {
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity getAnswerById(@PathVariable("id") Integer id) {
 
-           Answer ans = answerService.findById(id);
-           return ResponseEntity.ok().body(ans);
+        Answer ans = answerService.findById(id);
+        return ResponseEntity.ok().body(ans);
     }
 
     @GetMapping("/answer/{id}")
@@ -63,6 +63,17 @@ public class AnswerController {
     public ResponseEntity<String> deleteAnswerById(@PathVariable Integer id) {
         answerService.deleteById(id);
         return ResponseEntity.ok().body("DELETED");
+    }
+    @PostMapping("/answer/iscorrect/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void isCorrect(@PathVariable Integer id){
+        answerService.isCorrect(id);
+    }
+
+    @PostMapping("/answer/isincorrect/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void isIncorrect(@PathVariable Integer id){
+        answerService.isIncorrect(id);
     }
 
 }

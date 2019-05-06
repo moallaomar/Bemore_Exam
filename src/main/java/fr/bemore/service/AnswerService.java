@@ -17,5 +17,9 @@ public interface AnswerService {
 
     public Answer findById(Integer id) throws NullPointerException;
 
+    public void isCorrect(Integer id) throws NullPointerException;
+
+    public void isIncorrect(Integer id) throws NullPointerException;
+
 
 }
