@@ -16,57 +16,57 @@ import java.util.List;
 @RestController
 public class QuestionController {
 
-	@Autowired
-	private QuestionService questionService;
+    @Autowired
+    private QuestionService questionService;
 
-	@Autowired
-	private QuizService QuizService;
+    @Autowired
+    private QuizService QuizService;
 
-	@ResponseStatus(HttpStatus.OK)
-	@GetMapping(value = "/questions", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Question>> findAll() {
-		List<Question> questions = questionService.findAll();
-		return ResponseEntity.ok().body(questions);
-	}
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "/questions", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Question>> findAll() {
+        List<Question> questions = questionService.findAll();
+        return ResponseEntity.ok().body(questions);
+    }
 
-	@ResponseStatus(HttpStatus.OK)
-	@GetMapping("/question/{id}")
-	public ResponseEntity<Question> findById(@PathVariable("id") Integer id) {
-		Question question = questionService.findById(id);
-		return ResponseEntity.ok().body(question);
-	}
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/question/{id}")
+    public ResponseEntity<Question> findById(@PathVariable("id") Integer id) {
+        Question question = questionService.findById(id);
+        return ResponseEntity.ok().body(question);
+    }
 
-	@ResponseStatus(HttpStatus.OK)
-	@GetMapping("/correctanswer/{id}")
-	public int findAnswerIdCorrect(@PathVariable("id") int questionId) {
-		int answerId = questionService.findAnswerIdCorrect(questionId);
-		return answerId;
-	}
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/correctanswer/{id}")
+    public int findAnswerIdCorrect(@PathVariable("id") int questionId) {
+        int answerId = questionService.findAnswerIdCorrect(questionId);
+        return answerId;
+    }
 
-	@PostMapping("/question/{id}")
-	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<Question> addQuestion(@PathVariable("id") Integer id, @RequestBody Question question) {
+    @PostMapping("/question/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Question> addQuestion(@PathVariable("id") Integer id, @RequestBody Question question) {
 
-		Quiz quiz = QuizService.findById(id);
-		question.setQuiz(quiz);
-		Question q = questionService.addQuestion(question);
-		System.out.println("added");
-		return ResponseEntity.ok().body(q);
-	}
+        Quiz quiz = QuizService.findById(id);
+        question.setQuiz(quiz);
+        Question q = questionService.addQuestion(question);
+        System.out.println("added");
+        return ResponseEntity.ok().body(q);
+    }
 
-	@DeleteMapping("/question/{id}")
-	@ResponseStatus(HttpStatus.OK)
-	public void deleteQuestionByContent(@PathVariable("id") Integer id) {
-		questionService.deleteById(id);
-		System.out.println("deleted");
-	}
+    @DeleteMapping("/question/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteQuestionByContent(@PathVariable("id") Integer id) {
+        questionService.deleteById(id);
+        System.out.println("deleted");
+    }
 
-	@GetMapping("/question/count")
-	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<Integer> countQuestions() {
-		Integer nb = questionService.countNbQuestion();
-		return ResponseEntity.ok().body(nb);
-	}
-	
+    @GetMapping("/question/count")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Integer> countQuestions() {
+        Integer nb = questionService.countNbQuestion();
+        return ResponseEntity.ok().body(nb);
+    }
+
 
 }

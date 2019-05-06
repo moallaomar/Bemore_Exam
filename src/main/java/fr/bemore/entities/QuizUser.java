@@ -1,6 +1,8 @@
 package fr.bemore.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,6 +29,7 @@ public class QuizUser implements Serializable {
     private AppUser appUser;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Quiz quiz;
 
     @OneToMany(mappedBy = "quizUser", cascade = CascadeType.ALL)

@@ -57,12 +57,17 @@ public class AnswerServiceImpl implements AnswerService {
         }
 
     }
-    public void isCorrect(Integer id) throws NullPointerException {
+    public void isCorrect(Integer id,boolean correct) throws NullPointerException {
 
         try {
             Answer a = answerRepository.findById(id).get();
-            a.setCorrect(true);
-            System.out.println("Answer Setted to Correct !");
+            a.setCorrect(correct);
+
+            if(correct == true){
+                System.out.println("Answer Setted to Correct !");
+            }else {
+                System.out.println("Answer Setted to Incorrect !");
+            }
             answerRepository.save(a);
         } catch (NullPointerException e) {
             e.printStackTrace();

@@ -1,6 +1,9 @@
 package fr.bemore.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.io.Serializable;
 /**
@@ -21,12 +24,15 @@ public class QuizAnswer implements Serializable {
     private Integer id;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private QuizUser quizUser;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Question question;
 
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Answer selectedAnswer;
 
     public QuizAnswer(QuizUser quizUser, Question question, Answer selectedAnswer) {
@@ -38,7 +44,8 @@ public class QuizAnswer implements Serializable {
     public QuizAnswer() {
 
     }
-    /** GETTERS & SETTERS
+    /**
+     *  GETTERS & SETTERS
      */
     @JsonBackReference
     public QuizUser getQuizUser() {

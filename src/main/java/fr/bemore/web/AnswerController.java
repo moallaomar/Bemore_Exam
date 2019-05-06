@@ -64,16 +64,14 @@ public class AnswerController {
         answerService.deleteById(id);
         return ResponseEntity.ok().body("DELETED");
     }
+
     @PostMapping("/answer/iscorrect/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void isCorrect(@PathVariable Integer id){
-        answerService.isCorrect(id);
+    public void isCorrect(@PathVariable Integer id, @RequestBody boolean correct) {
+
+        answerService.isCorrect(id, correct);
+
     }
 
-    @PostMapping("/answer/isincorrect/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void isIncorrect(@PathVariable Integer id){
-        answerService.isIncorrect(id);
-    }
 
 }

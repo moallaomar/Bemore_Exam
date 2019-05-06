@@ -1,6 +1,6 @@
-INSERT INTO `db_users`.`quiz` (`id`, `description`, `name`) VALUES ('1', 'Oracle', 'JAVA');
+INSERT INTO `db_users`.`quiz` (`id`, `description`, `name`) VALUES ('1', 'Oracle', 'Java');
 INSERT INTO `db_users`.`quiz` (`id`, `description`, `name`) VALUES ('2', 'Google', 'Angular');
-INSERT INTO `db_users`.`quiz` (`id`, `description`, `name`) VALUES ('3', 'Microsoft', '.net');
+INSERT INTO `db_users`.`quiz` (`id`, `description`, `name`) VALUES ('3', 'Microsoft', '.Net');
 
 INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('1', 'Whats POO','1');
 INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('2', 'JVM ?','1');
