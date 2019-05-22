@@ -47,6 +47,10 @@ public class Question implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "question", cascade = CascadeType.ALL)
 	private List<Answer> answers;
 
+	@Lob
+	@Column(name = "content_fr", nullable = false, length = 1000)
+	private String Content_fr;
+
 	/**
 	 * Each Question has a quiz_id .
 	 */
@@ -60,14 +64,14 @@ public class Question implements Serializable {
 	 * 
 	 * @param content, The content of the question.
 	 */
-	Question(String content) {
-		this.content = content;
+	public Question(String content,String content_fr) {
+		this.content = content; this.Content_fr = content_fr;
 	}
 
 	/**
 	 * Creates a question without params.
 	 */
-	Question() {
+	public Question() {
 	}
 
 	/**
@@ -143,4 +147,11 @@ public class Question implements Serializable {
 		this.quiz = quiz;
 	}
 
+	public String getContent_fr() {
+		return Content_fr;
+	}
+
+	public void setContent_fr(String content_fr) {
+		Content_fr = content_fr;
+	}
 }

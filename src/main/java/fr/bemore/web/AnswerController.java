@@ -1,5 +1,7 @@
 package fr.bemore.web;
 
+import fr.bemore.Exceptions.AnswerNotFindException;
+import fr.bemore.Exceptions.QuestionNotFoundException;
 import fr.bemore.entities.Answer;
 import fr.bemore.entities.Question;
 import fr.bemore.service.AnswerService;
@@ -24,11 +26,11 @@ public class AnswerController {
 
     @PostMapping("/answer/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Answer> saveAnswer(@PathVariable("id") Integer id, @RequestBody Answer answer) {
+    public ResponseEntity<Answer> saveAnswer(@PathVariable("id") Integer id, @RequestBody Answer answer) throws QuestionNotFoundException {
         Question question = questionService.findById(id);
         answer.setQuestion(question);
         Answer ans = answerService.saveAnswer(answer);
-        return ResponseEntity.ok().body(ans);
+        return new ResponseEntity<Answer>(ans , HttpStatus.OK);
     }
 
     @GetMapping("/answer/count")
@@ -40,7 +42,7 @@ public class AnswerController {
 
     @GetMapping("/answers/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity getAnswerById(@PathVariable("id") Integer id) {
+    public ResponseEntity getAnswerById(@PathVariable("id") Integer id) throws AnswerNotFindException {
 
         Answer ans = answerService.findById(id);
         return ResponseEntity.ok().body(ans);

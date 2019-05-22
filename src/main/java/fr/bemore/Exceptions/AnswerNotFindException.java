@@ -5,16 +5,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class QuizNotFoundException extends Exception {
-    public QuizNotFoundException(String message) {
+public class AnswerNotFindException extends  Exception {
+
+    public AnswerNotFindException(String message){
         super(message);
     }
-
-    public QuizNotFoundException() {
+    public AnswerNotFindException(){
         super();
     }
-
-    public QuizNotFoundException(Exception e) {
+    public AnswerNotFindException(Exception e){
         super(e);
     }
 }

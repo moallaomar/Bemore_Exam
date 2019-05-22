@@ -1,5 +1,6 @@
 package fr.bemore.service;
 
+import fr.bemore.Exceptions.AnswerNotFindException;
 import fr.bemore.entities.Answer;
 
 import java.util.List;
@@ -15,11 +16,11 @@ public interface AnswerService {
 
     public void deleteById(Integer id);
 
-    public Answer findById(Integer id) throws NullPointerException;
+    public Answer findById(Integer id) throws AnswerNotFindException;
 
-    public void isCorrect(Integer id,boolean correct) throws NullPointerException;
-
-
+    public Answer isCorrect(Integer id,boolean correct) throws NullPointerException;
 
 
-}
+
+
+    }

@@ -1,5 +1,6 @@
 package fr.bemore.web;
 
+import fr.bemore.Exceptions.QuizNotFoundException;
 import fr.bemore.entities.Question;
 import fr.bemore.entities.Quiz;
 import fr.bemore.entities.dto.AnswerDTO;
@@ -49,10 +50,11 @@ public class QuizController {
     }
 
     @GetMapping(path = "/getquiz/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity getById(@PathVariable("id") Integer id) {
+    public ResponseEntity getById(@PathVariable("id") Integer id) throws QuizNotFoundException{
         Quiz quiz = quizService.findById(id);
-
+            if (quiz == null){
+                return ResponseEntity.notFound().build();
+            }
         return ResponseEntity.ok(quiz);
     }
 
@@ -65,7 +67,7 @@ public class QuizController {
 
     @GetMapping("/quiz/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<Question>> findQuestionsByQuizId(@PathVariable("id") Integer id, Principal principal) {
+    public ResponseEntity<List<Question>> findQuestionsByQuizId(@PathVariable("id") Integer id, Principal principal) throws QuizNotFoundException {
         if (quizService.userPassedQuiz(id, principal) != null) {
 
             List<Question> q = null;
@@ -84,7 +86,7 @@ public class QuizController {
 
     @PostMapping("/quiz/{id}/{score}")
     public void submitQuiz(@PathVariable("id") Integer id, Principal principal, @RequestBody List<AnswerDTO> answersDTO,
-                           @PathVariable("score") String score) {
+                           @PathVariable("score") String score) throws QuizNotFoundException {
         quizService.submitQuiz(id, answersDTO, principal, score);
     }
 }

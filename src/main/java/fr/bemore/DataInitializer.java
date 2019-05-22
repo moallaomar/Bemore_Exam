@@ -1,41 +1,36 @@
-package fr.bemore.Bemore;
+package fr.bemore;
 
 import fr.bemore.entities.AppRole;
 import fr.bemore.service.AccountService;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 
 import java.util.stream.Stream;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class BemoreApplicationTests {
+@Component
+@Slf4j
+@Profile("!test")
+public class DataInitializer implements CommandLineRunner {
 
-    @Test
-    public void contextLoads() {
-    }
+    @Autowired
+    AccountService accountService;
 
-    @Bean
-    CommandLineRunner start(@Autowired AccountService accountService) {
-        return args -> {
+
+    @Override
+    public void run(String... args) throws Exception {
+        log.info("initializing Users data...");
             accountService.save(new AppRole(null, "USER"));
             accountService.save(new AppRole(null, "ADMIN"));
             Stream.of("bemore1", "bemore2", "bemore3", "bemore_admin").forEach(un -> {
                 accountService.saveUser(un, "1234", "1234");
             });
             accountService.addRoleToUser("bemore_admin", "ADMIN");
+        log.info("Ready !");
         };
-    }
 
-    @Bean
-    BCryptPasswordEncoder getBCPE() {
-        return new BCryptPasswordEncoder();
-    }
 
-}
+    }

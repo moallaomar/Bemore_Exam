@@ -1,5 +1,6 @@
 package fr.bemore.service;
 
+import fr.bemore.Exceptions.QuizNotFoundException;
 import fr.bemore.entities.Quiz;
 import fr.bemore.entities.QuizAnswer;
 import fr.bemore.entities.QuizUser;
@@ -12,20 +13,20 @@ public interface QuizService {
 
     public List<Quiz> findAll();
 
-    public boolean save(Quiz quiz);
+    public boolean save(Quiz quiz)  throws NullPointerException;
 
-    public Quiz findLastQuiz();
+    public Quiz findLastQuiz() throws NullPointerException;
 
     public boolean isQuizName(String name);
 
     public void deleteById(Integer quizId);
 
-    public Quiz findById(Integer id);
+    public Quiz findById(Integer id) throws QuizNotFoundException;
 
-    public void submitQuiz(Integer quizId, List<AnswerDTO> answers, Principal principal, String score);
+    public void submitQuiz(Integer quizId, List<AnswerDTO> answers, Principal principal, String score) throws QuizNotFoundException;
 
-    public QuizUser userPassedQuiz(Integer quizId, Principal principal);
+    public QuizUser userPassedQuiz(Integer quizId, Principal principal) throws QuizNotFoundException;
 
-    public List<QuizAnswer> findQuizAnswerByQuizUser(Integer quizId, Principal principal);
+    public List<QuizAnswer> findQuizAnswerByQuizUser(Integer quizId, Principal principal) throws QuizNotFoundException;
 
 }

@@ -4,23 +4,28 @@ import fr.bemore.dao.AppRoleRepository;
 import fr.bemore.dao.AppUserRepository;
 import fr.bemore.entities.AppRole;
 import fr.bemore.entities.AppUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 /**
  * this class represents the implementation of methods that relate to users.
  *
  * @author Omar Moalla
- *
  * @version 1.0
- *
  */
 @Service
 @Transactional
 public class AccountServiceImpl implements AccountService {
-    private AppUserRepository appUserRepository;
-    private AppRoleRepository appRoleRepository;
+
+
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    private AppUserRepository appUserRepository;
+    @Autowired
+    private AppRoleRepository appRoleRepository;
 
     public AccountServiceImpl(AppUserRepository appUserRepository, AppRoleRepository appRoleRepository,
                               BCryptPasswordEncoder bCryptPasswordEncoder) {
@@ -60,12 +65,12 @@ public class AccountServiceImpl implements AccountService {
         AppUser appUser = appUserRepository.findByUsername(username);
         AppRole appRole = appRoleRepository.findByRoleName(rolename);
         appUser.getRoles().add(appRole);
+
     }
 
     @Override
     public void deleteUser(long id) {
         appUserRepository.deleteById(id);
     }
-
 
 }

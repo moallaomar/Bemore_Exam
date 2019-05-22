@@ -1,6 +1,7 @@
 package fr.bemore.web;
 
 
+import fr.bemore.Exceptions.QuizNotFoundException;
 import fr.bemore.entities.QuizAnswer;
 import fr.bemore.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class QuizAnswerController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/quizanswers/{id}")
-    public ResponseEntity<List<QuizAnswer>> findQuizAnswerByQuizUser(@PathVariable("id") Integer id, Principal principal) {
+    public ResponseEntity<List<QuizAnswer>> findQuizAnswerByQuizUser(@PathVariable("id") Integer id, Principal principal) throws QuizNotFoundException {
         List<QuizAnswer> qa = quizService.findQuizAnswerByQuizUser(id, principal);
         return ResponseEntity.ok().body(qa);
     }

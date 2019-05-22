@@ -1,13 +1,14 @@
 package fr.bemore.service;
 
+import fr.bemore.Exceptions.AnswerNotFindException;
 import fr.bemore.dao.AnswerRepository;
 import fr.bemore.entities.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service("AnswerService")
 public class AnswerServiceImpl implements AnswerService {
@@ -17,14 +18,17 @@ public class AnswerServiceImpl implements AnswerService {
 
     @Override
     public Answer saveAnswer(Answer answer) {
+        if (answer == null)
+            throw new NullPointerException();
+
         Answer answ = answerRepository.save(answer);
         return answ;
     }
 
     @Override
     public Integer countNbAnswer() {
-            List<Answer> answers = answerRepository.findAll();
-            return answers.size();
+        List<Answer> answers = answerRepository.findAll();
+        return answers.size();
 
     }
 
@@ -46,46 +50,35 @@ public class AnswerServiceImpl implements AnswerService {
 
     }
 
-    @Override
-    public Answer findById(Integer id) throws NullPointerException {
-        try {
-            Answer ans = answerRepository.findById(id).get();
-            return ans;
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-            return new Answer();
-        }
 
+    public Answer findById(Integer id) throws AnswerNotFindException {
+
+        Optional<Answer> ans = answerRepository.findById(id);
+        if (!ans.isPresent())
+            throw new AnswerNotFindException("Cannot find the answer : " + id);
+        return ans.get();
     }
-    public void isCorrect(Integer id,boolean correct) throws NullPointerException {
+
+    public Answer isCorrect(Integer id, boolean correct) throws NullPointerException {
 
         try {
-            Answer a = answerRepository.findById(id).get();
-            a.setCorrect(correct);
+            Answer answer = answerRepository.findById(id).get();
+            answer.setCorrect(correct);
 
-            if(correct == true){
+            if (correct == true) {
                 System.out.println("Answer Setted to Correct !");
-            }else {
+            } else {
                 System.out.println("Answer Setted to Incorrect !");
             }
-            answerRepository.save(a);
+            answerRepository.save(answer);
+            return answer;
         } catch (NullPointerException e) {
             e.printStackTrace();
             System.out.println("Answer not Found ! ");
+            return  new Answer();
         }
     }
-    public void isIncorrect(Integer id) throws NullPointerException{
-        try {
-            Answer a = answerRepository.findById(id).get();
-            a.setCorrect(false);
-            answerRepository.save(a);
 
-            System.out.println("Answer Setted to Incorrect!");
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-            System.out.println("Answer not Found ! ");
-        }
-}
 
 
 

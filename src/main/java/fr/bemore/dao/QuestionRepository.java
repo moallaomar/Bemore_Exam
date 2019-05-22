@@ -24,10 +24,6 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
     @Query("select q from Question q join q.quiz z where z.id = :x")
     public List<Question> findQuestionsByQuizId(@Param("x") Integer x);
 
-    @Transactional
-    @Modifying
-    public void deleteByContent(String content);
-
     @Override
     public void deleteById(Integer id);
 

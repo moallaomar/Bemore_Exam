@@ -23,8 +23,12 @@ import java.util.Collection;
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+
+
     @Autowired
     private AccountService accountService;
+
+    public UserDetailsServiceImpl(AccountService accountService){ this.accountService = accountService; }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

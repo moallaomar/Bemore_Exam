@@ -1,35 +1,45 @@
 INSERT INTO `db_users`.`quiz` (`id`, `description`, `name`) VALUES ('1', 'Oracle', 'Java');
 INSERT INTO `db_users`.`quiz` (`id`, `description`, `name`) VALUES ('2', 'Google', 'Angular');
-INSERT INTO `db_users`.`quiz` (`id`, `description`, `name`) VALUES ('3', 'Microsoft', '.Net');
 
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('1', 'Whats POO','1');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('2', 'JVM ?','1');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('3', 'Which of the following lines will compile without warning or error?','1');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('4', 'Which of the following annotation of JAX RS API binds the parameter passed to method to a value in path?','1');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('5', 'Which statement will display each element of the array? \n int myArray[] = {1,2,3,4,5}; ','1');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('6', 'Which of the following declares an array that supports two rows and a variable number of columns?','1');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('7', 'Which of the following modules is not used in Spring?','1');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('8', 'Which of the following has the default scope in Spring?','1');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('9', 'What is the Life Cycle Of A Jpa Entity?','1');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('10', 'What is TRUE about the cascading and cascade mode attributes in Entity Beans?','1');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('11', 'Which of the following statements can be used to determine if cat can be found in the list? ArrayList<String> list = new ArrayList<>(); \n list.add("dog"); \n list.add("cat"); \n    list.add("frog"); \n ','1');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('1', 'Whats POO','Definir La POO','1');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('2', 'Whats JVM ?','Definir La JVM','1');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES
+('3', 'Which of the following lines will compile without warning or error?','Laquelle des lignes suivantes compilera sans avertissement ni erreur?','1');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('4', 'Which of the following annotation of JAX RS API binds the parameter passed to method to a value in path?','Laquelle des annotations suivantes de l''API JAX RS lie le paramètre transmis à method à une valeur dans path?','1');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('5', 'Which statement will display each element of the array? \n int myArray[] = {1,2,3,4,5}; ','Quelle déclaration affichera chaque élément du tableau? \ n int myArray [] = {1,2,3,4,5};','1');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('6', 'Which of the following declares an array that supports two rows and a variable number of columns?','
+Lequel des énoncés suivants déclare un tableau qui prend en charge deux lignes et un nombre variable de colonnes?','1');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('7', 'Which of the following modules is not used in Spring?','
+Lequel des modules suivants n''est pas utilisé dans Spring?','1');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('8', 'Which of the following has the default scope in Spring?','Lequel des éléments suivants est le scope par défaut dans Spring ?','1');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('9', 'What is the Life Cycle Of A Jpa Entity?','Quel est le cycle de vie d\'\ une entité Jpa?','1');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('10', 'What is TRUE about the cascading and cascade mode attributes in Entity Beans?','
+Qu''est-ce qui est VRAI concernant les attributs de mode en cascade et en cascade dans Entity Beans?','1');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('11', 'Which of the following statements can be used to determine if cat can be found in the list? ArrayList<String> list = new ArrayList<>(); \n list.add("dog"); \n list.add("cat"); \n    list.add("frog"); \n ','Parmi les affirmations suivantes, laquelle peut être utilisée pour déterminer si un chat peut être trouvé dans la liste? ArrayList <String> list = new ArrayList <> (); \ n list.add ("chien"); \ n list.add ("cat"); \ n list.add ("grenouille"); \ n','1');
 
 
 
 
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('12', 'In Angular, you can pass data from child component to parent component using','2');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('13', 'In Angular routing, below tag is used to render matched component via active route.','2');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('14', 'We need to call below method of RouterModule for providing all routes in AppModule','2');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('15', 'To build application in production mode, use below command','2');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('16', 'Directive can listen to host/target events using below decoarator','2');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('17', 'Using below wild card we can define page not found route','2');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('18', 'Below service can be used to extract route parameters inside component','2');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('19', ' HTTP service’s get/put/post/delete function returns','2');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('20', 'To use HttpClient component you need to import below module','2');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('21', 'A component can have child route defined using below property','2');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('22', 'Below component represent “target/host” DOM element inside Directive’s constructor','2');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('23', 'Angular 2+ is using ........to detect changes.','2');
-INSERT INTO `db_users`.`question` (`id`, `content`,`quiz_id`) VALUES ('24', 'A directive which modifies DOM hierarchy is called','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('12', 'In Angular, you can pass data from child component to parent component using','
+Dans Angular, vous pouvez transmettre des données du composant enfant au composant parent à l''aide de','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('13', 'In Angular routing, below tag is used to render matched component via active route.','Dans le routing d\'\angular, la balise ci-dessous est utilisée pour retourner le composant correspondant via une route active.','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('14', 'We need to call below method of RouterModule for providing all routes in AppModule','Nous devons appeler la méthode ci-dessous de RouterModule pour fournir toutes les routes dans AppModule.','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('15', 'To build application in production mode, use below command','Pour créer une application en mode de production, utilisez la commande ci-dessous','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('16', 'Directive can listen to host/target events using below decorator','La directive peut écouter les événements hôte / cible à l''aide du décorateur ci-dessous.','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('17', 'Using below wild card we can define page not found route','En utilisant Wild card, nous pouvons définir une route introuvable','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('18', 'Below service can be used to extract route parameters inside component','
+Le service ci-dessous peut être utilisé pour extraire les paramètres de route à l''intérieur du composant','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('19', ' HTTP service’s get/put/post/delete function returns','
+Les retours de la fonction get / put / post / post du service HTTP','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('20', 'To use HttpClient component you need to import below module','
+Pour utiliser le composant HttpClient, vous devez importer le module ci-dessous.','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('21', 'A component can have child route defined using below property','
+Un composant peut avoir une child route définie à l\'\ aide de la propriété ci-dessous','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('22', 'Below component represent “target/host” DOM element inside Directive’s constructor','
+Le composant ci-dessous représente l’élément DOM “Target / Host” dans le constructeur de la directive.','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('23', 'Angular 2+ is using ........to detect changes.','
+Angular 2+ utilise ........ pour détecter les modifications.','2');
+INSERT INTO `db_users`.`question` (`id`, `content`,`content_fr`,`quiz_id`) VALUES ('24', 'A directive which modifies DOM hierarchy is called','Une directive qui modifie la hiérarchie DOM est appelée ?','2');
 
 
 
