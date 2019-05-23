@@ -40,7 +40,7 @@ jobs:
           key: Bemore_Exam-{{ checksum "pom.xml" }}
 
       # package into a jar
-      - run: mvn clean package
+      - run: mvn integration-test cobertura:cobertura
 
       # build and push docker image to docker hub
 
