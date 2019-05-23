@@ -4,10 +4,6 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk
 
-
-
-
-
     working_directory: ~/Bemore_Exam
 
     environment:
@@ -40,5 +36,4 @@ jobs:
       - store_test_results:
           path: target/surefire-reports
 
-      - store_artifacts:
-        path: target/Bemore-0.0.1-SNAPSHOT.jar
+
