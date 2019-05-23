@@ -3,6 +3,18 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk
+        environment:
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_DB: root
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_PASSWORD:
+            - image: mysql:latest
+              command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --innodb-large-prefix=true --innodb-file-format=Barracuda
+              environment:
+                MYSQL_USER: root
+                MYSQL_ALLOW_EMPTY_PASSWORD: true
+
 
     working_directory: ~/Bemore_Exam
 
