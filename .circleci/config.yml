@@ -27,16 +27,16 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{‌{ checksum "pom.xml" }}
+          - Bemore_Exam-{‌{ checksum "pom.xml" }}
           # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          - Bemore_Exam-
  
       - run: mvn dependency:go-offline
  
       - save_cache:
           paths:
             - ~/.m2
-          key: v1-dependencies-{‌{ checksum "pom.xml" }}
+          key: Bemore_Exam-{‌{ checksum "pom.xml" }}
  
       # run tests! and gen code coverage
       - run: mvn integration-test cobertura:cobertura
