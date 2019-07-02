@@ -84,14 +84,11 @@ public class AnswerServiceImplTest {
 
     @Test
     public void findById() throws AnswerNotFindException {
-        Answer ans = new Answer();
-        ans.setContent("Answer 1");
         Answer ans1 = new Answer();
         ans1.setContent("Answer 2");
         Question question = new Question("Q2", "Q2FR");
         question.setId(1);
         ans1.setQuestion(question);
-        ans.setQuestion(question);
         Optional<Answer> answer = Optional.of(ans1);
         Mockito.when(answerRepository.findById(ans1.getId())).thenReturn(answer);
 
@@ -100,7 +97,8 @@ public class AnswerServiceImplTest {
     }
 
     @Test
-    public void SetIsCorrect() {
+
+    public void setIsCorrect() {
         Answer ans = new Answer();
         ans.setId(1);
         ans.setContent("Answer 1");

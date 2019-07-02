@@ -22,7 +22,6 @@ public class QuestionRepositoryTest {
     QuestionRepository questionRepository;
     Quiz quiz = new Quiz("Java", "Oracle");
     Question q = new Question("Whats POO", "Definir La POO");
-    Question q1 = new Question("Question 2", "Q2");
     @Autowired
     private TestEntityManager entityManager;
     @Autowired

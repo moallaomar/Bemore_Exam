@@ -17,9 +17,8 @@ import java.util.List;
  * @version 1.0
  */
 @Entity
-public class QuizUser implements Serializable {
+public class QuizUser  {
 
-    private static final long serialVersionUID = 5548L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,8 +45,9 @@ public class QuizUser implements Serializable {
     private LocalDateTime passedDateTime;
 
 
-
-    /** Creates a quizanswer object for each  quizUser object creation.
+    /**
+     * Creates a quizanswer object for each  quizUser object creation.
+     *
      * @param quizAnswer, the description of the quiz.
      */
     public void addQuizAnswer(QuizAnswer quizAnswer) {
@@ -56,7 +56,9 @@ public class QuizUser implements Serializable {
         }
         this.quizAnswers.add(quizAnswer);
     }
-    /** GETTERS & SETTERS
+
+    /**
+     * GETTERS & SETTERS
      */
     public Integer getId() {
         return id;

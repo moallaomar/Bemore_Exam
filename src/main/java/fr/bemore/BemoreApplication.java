@@ -12,10 +12,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Slf4j
 public class BemoreApplication {
 
+
     public static void main(String[] args) {
         SpringApplication.run(BemoreApplication.class, args);
     }
-
 
     @Bean
     BCryptPasswordEncoder getBCPE() {

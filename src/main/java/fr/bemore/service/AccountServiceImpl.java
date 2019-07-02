@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
  * this class represents the implementation of methods that relate to users.
  *
  * @author Omar Moalla
- * @version 1.0
+ * @version  1.0
  */
 @Service
 @Transactional

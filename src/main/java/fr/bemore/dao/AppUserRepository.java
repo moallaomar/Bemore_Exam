@@ -11,6 +11,4 @@ import fr.bemore.entities.AppUser;
 @RepositoryRestResource
 public interface AppUserRepository extends JpaRepository<AppUser, Long> {
 	public AppUser findByUsername(String username);
-
-
 }

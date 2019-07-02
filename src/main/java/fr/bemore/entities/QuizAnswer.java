@@ -14,10 +14,9 @@ import java.io.Serializable;
  * 
  */
 @Entity
-public class QuizAnswer implements Serializable {
+public class QuizAnswer {
 
-
-    private static final long serialVersionUID = 2564L;
+    
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

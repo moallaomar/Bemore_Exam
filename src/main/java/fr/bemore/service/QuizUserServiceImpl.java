@@ -25,6 +25,6 @@ public class QuizUserServiceImpl implements  QuizUserService {
         }
         List<QuizUser> quizUser = new ArrayList<>(0);
         return quizUser;
-
     }
+
 }

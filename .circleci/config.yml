@@ -1,36 +1,23 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/openjdk:8-jdk
-        environment:
-
-
-            - image: mysql:latest
-              command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --innodb-large-prefix=true --innodb-file-format=Barracuda
-              environment:
-                MYSQL_HOST: 127.0.0.1
-                MYSQL_DB: db_users
-                MYSQL_USER: root
-                MYSQL_ALLOW_EMPTY_PASSWORD: true
-                MYSQL_PASSWORD: root
-
 
     working_directory: ~/Bemore_Exam
 
-    environment:
-      # Customize the JVM maximum heap limit
-      MAVEN_OPTS: -Xmx3200m
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
+      - image: circleci/mysql:latest
+        command: [--default-authentication-plugin=mysql_native_password]
+          environment:
+            MYSQL_DATABASE: db_users
 
     steps:
-      # git pull
+
+
       - checkout
 
-
-      # Download and cache dependencies
       - restore_cache:
-          keys:
-            - Bemore_Exam-{{ checksum "pom.xml" }}
+          key: Bemore_Exam-{{ checksum "pom.xml" }}
 
       - run: mvn dependency:go-offline
 
@@ -39,13 +26,10 @@ jobs:
             - ~/.m2
           key: Bemore_Exam-{{ checksum "pom.xml" }}
 
-      # package into a jar
-      - run: mvn clean verify
+      - run: mvn package
 
-      # build and push docker image to docker hub
-
-      # store raw contents of src code
       - store_test_results:
           path: target/surefire-reports
 
-
+      - store_artifacts:
+          path: target/Bemore-0.0.1-SNAPSHOT.jar

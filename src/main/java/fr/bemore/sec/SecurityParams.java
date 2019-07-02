@@ -63,7 +63,7 @@ public class SecurityParams {
     public static String createToken(String username) {
         List<String> roles = new ArrayList<String>();
             roles.add("USER");
-        if (username == "bemore_admin"){
+        if (username.equals("bemore_admin")){
 
             roles.add("ADMIN");
         }

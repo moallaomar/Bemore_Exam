@@ -6,7 +6,6 @@ import fr.bemore.entities.*;
 import fr.bemore.entities.dto.AnswerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;

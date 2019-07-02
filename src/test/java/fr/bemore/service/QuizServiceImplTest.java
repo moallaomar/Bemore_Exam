@@ -73,7 +73,6 @@ public class QuizServiceImplTest {
     @Test
     public void isQuizName() {
         Quiz quiz = new Quiz("Java", "Oracle");
-        Quiz quiz1 = new Quiz("Angular", "Google");
 
         Mockito.when(quizRepository.getQuizByName(quiz.getName())).thenReturn(quiz);
 
